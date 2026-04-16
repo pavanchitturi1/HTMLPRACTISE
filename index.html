@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
     <title>Data Engineer Portfolio</title>
@@ -272,6 +272,283 @@
 
 <footer>
     © 2024 Portfolio
+</footer>
+
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data Engineer Portfolio</title>
+
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --secondary: #06b6d4;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --bg: #f1f5f9;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: linear-gradient(135deg, #eef2ff, #f8fafc);
+}
+
+        header {
+            background: var(--primary);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            position: sticky;
+            top: 120px;
+            background: var(--dark);
+            z-index: 999;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .navbar li {
+            list-style: none;
+            margin: 0 10px;
+        }
+
+        .navbar li:first-child { margin-right: auto; }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 14px;
+        }
+
+        .navbar a:hover { color: var(--secondary); }
+
+        section { padding: 60px 20px; }
+
+        h2 { text-align: center; margin-bottom: 40px; }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+            background: linear-gradient(135deg, #4f46e5, #06b6d4);
+            color: white;
+        }
+
+        /* About */
+        #About { background: linear-gradient(to right, #f9fafc, #eef2ff); }
+
+        .about-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+
+        .about-text { max-width: 500px; font-size: 18px; }
+
+        .about-section img { border-radius: 15px; }
+
+        /* Skills */
+        #Skills { background: linear-gradient(135deg, #3e5593, #3d7ba4);
+                  border-radius: 20px;
+                  margin: 40px 20px;
+                  padding: 60px 20px; }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+        }
+
+        .skill-card {
+            background: linear-gradient(135deg, #ffffff, #f0f4ff);
+            padding: 25px;
+            border-radius: 20px;
+            text-align: center;
+            transition: 0.4s;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-12px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        /* Projects */
+        #projects { background: linear-gradient(135deg, #ad4170, #794e83);
+                    border-radius: 20px;
+                    margin: 40px 20px;
+                    padding: 60px 20px;
+                  }
+
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .project-card {
+            background: white;
+            padding: 20px;
+            border-radius: 20px;
+            transition: 0.4s;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .project-card img {
+            width: 100%;
+            border-radius: 15px;
+            transition: 0.4s;
+        }
+
+        .project-card:hover img { transform: scale(1.1); }
+
+        .project-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        button {
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #4f46e5, #06b6d4);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover { transform: scale(1.05); }
+
+        #contact, #social { text-align: center;
+        
+        background-color: beige;
+    }
+
+        input {
+            padding: 10px;
+            margin: 10px;
+            width: 250px;
+        }
+
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+
+        .fid{
+            background-color: #3e5593;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            section { padding: 40px 15px; }
+
+            .about-section { flex-direction: column; text-align: center; }
+
+            .projects-container,
+            .skills-container { grid-template-columns: 1fr; }
+
+            input { width: 90%; }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Data Engineer Portfolio</h1>
+</header>
+
+<nav>
+    <ul class="navbar">
+        <li><img src="PORTFOLIO.png" width="50"></li>
+        <li><a href="#About">About</a></li>
+        <li><a href="#Skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<section class="hero">
+    <h1>Hi, I'm Pavan 👋</h1>
+    <h2>Data Engineer | PySpark | Spark</h2>
+    <p>I build scalable data pipelines & real-time systems</p>
+</section>
+
+<section id="About" class="about-section">
+    <img src="profilepic.jpg" width="300">
+    <div class="about-text">
+        <h2>About Me</h2>
+        <p>
+            Hello! I am <strong>Chitturi Pavan Kumar</strong>.
+            I specialize in building scalable data pipelines using PySpark and Spark SQL.
+        </p>
+    </div>
+</section>
+
+<section id="Skills">
+    <h2 style="background-color:yellowgreen">Skills</h2>
+    <div class="skills-container">
+        <div class="skill-card"><h3>PySpark</h3><p>Big Data Processing</p></div>
+        <div class="skill-card"><h3>Spark SQL</h3><p>Data Queries</p></div>
+        <div class="skill-card"><h3>Python</h3><p>Backend & Scripting</p></div>
+        <div class="skill-card"><h3>Kafka</h3><p>Streaming</p></div>
+    </div>
+</section>
+
+<section id="projects">
+    <h2 style="background-color:yellowgreen">Projects</h2>
+    <div class="projects-container">
+        <div class="project-card">
+            <img src="projects.jpg">
+            <h3>Data Pipeline</h3>
+            <p>Processed 1M+ records using PySpark, improving performance by 30%</p>
+            <button>View Project</button>
+        </div>
+
+        <div class="project-card">
+            <img src="projects.jpg">
+            <h3>Real-time Processing</h3>
+            <p>Built real-time analytics system using Spark Streaming and Kafka</p>
+            <button>View Project</button>
+        </div>
+    </div>
+</section>
+
+<section id="contact">
+    <h2>Contact</h2>
+    <input type="text" placeholder="Name"><br>
+    <input type="email" placeholder="Email"><br>
+    <button>Submit</button>
+</section>
+
+<section id="social">
+    <h2>Connect</h2>
+    <a href="https://www.linkedin.com/in/pavan-kumar-chitturi-1078a5231/" target="_blank">LinkedIn</a>
+    <a href="https://github.com/pavanchitturi1/HTMLPRACTISE.git" target="_blank">GitHub</a>
+</section>
+
+<footer class="fid">
+    © 2026 Portfolio
 </footer>
 
 </body>
