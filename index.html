@@ -1,106 +1,278 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Sample Semantic Webpage</title>
-    </head>
-    <body>
-        <header>
-            <h1>Data Engineer Portfolio</h1>
-            <nav>
-                <ul>
-                    <li><a href="About">About</a></li>
-                    <li><a href="#Skills">Skills</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
+<head>
+    <title>Data Engineer Portfolio</title>
 
-            <section id="About">
-                <h2>About Me</h2>
-                <figure>
-                    <img src="profilepic.jpg" alt="Profile Picture not found" width="150">
-                    <figcaption>f.21 Profile Picture</figcaption>
-                </figure>
-                <p>Aspiring data engineer from Hyderabad, focusing on PySpark, Spark SQL, and big data processing. Preparing for technical interviews while maintaining a daily routine of walking and learning.</p>
-            </section>
+    <style>
+        :root {
+            --primary: #1411c5;
+            --dark: #333;
+            --light: #f5f5f5;
+            --bg: #f9fafc;
+            --accent: #00c6ff;
+        }
 
-            <section id="Skills">
-                <h2>Skills</h2>
-                <figure>
-                    <img src="skills.png" alt="Skills Image not found" width="30">
-                    <figcaption>f.22 Skills Image</figcaption>
-                </figure>
-                <ul>
-                    <li>PySpark</li>
-                    <li>Spark SQL</li>
-                    <li>DataFrame Manipulations</li>
-                    <li>Handling Data Skew</li>
-                </ul>
-                <article>
-                    <h3>Handling Data Skew</h3>
-                    <p>Techniques like salting and explode functions help manage data skew in distributed processing.</p>
-                </article>
-                <article>
-                    <h3>DataFrame Manipulations</h3>
-                    <p>Proficient in string functions, RDD transformations, and optimization for large datasets.</p>
-                </article>
-            </section>
+        html {
+            scroll-behavior: smooth;
+        }
 
-            <section id="projects">
-                <h2>Projects</h2>
-                <figure>
-                    <img src="projects.jpg" alt="Projects Image not found" width="30">
-                    <figcaption>f.22 Projects Image</figcaption>
-                </figure>
-                <article>
-                    <h3>Data Pipeline for E-commerce</h3>
-                    <p>Designed a data pipeline using PySpark to process and analyze e-commerce transaction data, improving query performance by 30%.</p>
-                </article>
-                <article>
-                    <h3>Real-time Data Processing</h3>
-                    <p>Implemented a real-time data processing system using Spark Streaming to monitor social media trends.</p>
-                </article>
-            </section>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: var(--bg);
+        }
 
-             </section>
-                <h2>Daily Habits</h2>
-                <figure>
-                    <img src="waliking.jpg" alt="Habits Image not found" width="30">
-                    <figcaption>f.24 Habits Image</figcaption>
-                <details>
-                    <summary>Fitness</summary>
-                    <p>5km morning walks and post-meal strolls.</p>
-                </details>
-                <details>
-                    <summary>Learning</summary>
-                    <p>PySpark practice on Jupyter and Databricks.</p>
-                </details>
-            </section>
+        header {
+            background: var(--primary);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
 
-            <section id="contact">
-                <h2>Contact Me</h2>
-                <figure>
-                    <img src="contact.jpg" alt="Contact Image not found" width="30">
-                    <figcaption>f.23 Contact Image</figcaption> 
-                <form>
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email">
-                    <button type="submit">Submit</button>
-                </form>
-                </figure>
-            </section>
+        nav {
+            position: sticky;
+            top: 120px;
+            background: var(--dark);
+            z-index: 999;
+        }
 
-     <section>
-        <h2>Connect with Me</h2>
+        .navbar {
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            margin: 0;
+        }
+
+        .navbar li {
+            list-style: none;
+            margin: 0 10px;
+        }
+
+        .navbar li:first-child {
+            margin-right: auto;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 14px;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .navbar a:hover {
+            color: var(--accent);
+        }
+
+        section {
+            padding: 60px 20px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .about-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+
+        .about-text {
+            max-width: 500px;
+            font-size: 18px;
+        }
+
+        .about-section img {
+            border-radius: 15px;
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .skill-card img {
+            width: 50px;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .project-card {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .project-card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        #contact {
+            text-align: center;
+        }
+
+        input {
+            padding: 10px;
+            margin: 10px;
+            width: 250px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        #social {
+            text-align: center;
+        }
+
+        #social a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: var(--primary);
+        }
+
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+
+        @media (max-width: 768px) {
+
+            .about-section {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav {
+                top: 70px;
+            }
+
+            .navbar {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .navbar li:first-child {
+                margin-right: 0;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Data Engineer Portfolio</h1>
+</header>
+
+<nav>
+    <ul class="navbar">
+        <li><img src="PORTFOLIO.png" width="50"></li>
+        <li><a href="#About">About</a></li>
+        <li><a href="#Skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<section id="About" class="about-section">
+    <figure>
+        <img src="profilepic.jpg" width="300">
+    </figure>
+
+    <aside class="about-text">
+        <h2>About Me</h2>
         <p>
-            <a href="https://www.linkedin.com/in/pavan-kumar-chitturi-1078a5231/" target="_blank">LinkedIn</a><br>
-            <a href="https://github.com/pavanchitturi1/HTMLPRACTISE.git" target="_blank">GitLab</a>
+            Hello! I am <strong>Chitturi Pavan Kumar</strong>, an aspiring data engineer from Hyderabad.
+            I am passionate about PySpark, Spark SQL, and building scalable data pipelines.
         </p>
-    </section>
+    </aside>
+</section>
 
-        </header>
-        <footer>
-            Copyright © 2024 Data Engineer Portfolio. All rights reserved.
-        </footer>
+<section id="Skills">
+    <h2 style="font-size: 30px;">Skills</h2>
+
+    <section class="skills-container">
+        <article class="skill-card"><img src="skills.png"><p>PySpark</p></article>
+        <article class="skill-card"><img src="skills.png"><p>Spark SQL</p></article>
+        <article class="skill-card"><img src="skills.png"><p>AI</p></article>
+        <article class="skill-card"><img src="skills.png"><p>Python</p></article>
+    </section>
+</section>
+
+<section id="projects">
+    <h2 style="font-size: 30px;">Projects</h2>
+
+    <section class="projects-container">
+        <article class="project-card">
+            <img src="projects.jpg">
+            <h3>Data Pipeline</h3>
+            <p>Built scalable PySpark pipeline improving performance by 30%.</p>
+        </article>
+
+        <article class="project-card">
+            <img src="projects.jpg">
+            <h3>Real-time Processing</h3>
+            <p>Used Spark Streaming for real-time analytics.</p>
+        </article>
+    </section>
+</section>
+
+<section id="contact">
+    <h2>Contact</h2>
+    <input type="text" placeholder="Name"><br>
+    <input type="email" placeholder="Email"><br>
+    <button>Submit</button>
+</section>
+
+<section id="social">
+    <h2>Connect</h2>
+    <a href="https://www.linkedin.com/in/pavan-kumar-chitturi-1078a5231/" target="_blank">LinkedIn</a>
+    <a href="https://github.com/pavanchitturi1/HTMLPRACTISE.git" target="_blank">GitHub</a>
+</section>
+
+<footer>
+    © 2024 Portfolio
+</footer>
+
+</body>
+</html>
