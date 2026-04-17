@@ -3,22 +3,39 @@
 <head>
     <title>Data Engineer Portfolio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
     <style>
         :root {
-            --primary: #4f46e5;
-            --secondary: #06b6d4;
-            --dark: #1e293b;
+            --primary: #6366f1;
+            --secondary: #22c55e;
+            --accent: #06b6d4;
+
+            --dark: #0f172a;
+            --text: #1e293b;
             --light: #f8fafc;
-            --bg: #f1f5f9;
+
+            --shadow-sm: 0 6px 20px rgba(0,0,0,0.08);
+            --shadow-md: 0 20px 40px rgba(0,0,0,0.15);
+            --shadow-lg: 0 30px 70px rgba(0,0,0,0.25);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
         }
 
         html { scroll-behavior: smooth; }
 
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background: linear-gradient(135deg, #eef2ff, #f8fafc);
-}
+            color: var(--text);
+            background: linear-gradient(135deg, #f5f3ff, #ede9fe);
+        }
 
         header {
             background: var(--primary);
@@ -28,11 +45,12 @@
             position: sticky;
             top: 0;
             z-index: 1000;
+            box-shadow: var(--shadow-md);
         }
 
         nav {
             position: sticky;
-            top: 120px;
+            top: 100px;
             background: var(--dark);
             z-index: 999;
         }
@@ -54,69 +72,108 @@
             color: white;
             text-decoration: none;
             padding: 14px;
+            font-weight: 500;
         }
 
-        .navbar a:hover { color: var(--secondary); }
+        .navbar a:hover {
+            color: var(--accent);
+            transform: scale(1.05);
+        }
 
-        section { padding: 60px 20px; }
+        section { padding: 70px 20px; }
 
-        h2 { text-align: center; margin-bottom: 40px; }
+        h1 { font-size: 42px; font-weight: 700; }
+        h2 { text-align: center; font-size: 30px; margin-bottom: 40px; }
 
         /* Hero */
         .hero {
             text-align: center;
-            padding: 100px 20px;
-            background: linear-gradient(135deg, #4f46e5, #06b6d4);
+            padding: 110px 20px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
             color: white;
         }
 
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
         /* About */
-        #About { background: linear-gradient(to right, #f9fafc, #eef2ff); }
+        #About {
+            background: white;
+            border-radius: 25px;
+            margin: 40px 20px;
+            box-shadow: var(--shadow-md);
+        }
 
         .about-section {
             display: flex;
-            align-items: center;
-            justify-content: center;
             gap: 60px;
+            justify-content: center;
+            align-items: center;
             flex-wrap: wrap;
         }
 
         .about-text { max-width: 500px; font-size: 18px; }
 
-        .about-section img { border-radius: 15px; }
+        .about-section img {
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+        }
 
         /* Skills */
-        #Skills { background: linear-gradient(135deg, #3e5593, #3d7ba4);
-                  border-radius: 20px;
-                  margin: 40px 20px;
-                  padding: 60px 20px; }
+        #Skills {
+            background: linear-gradient(135deg, #eef2ff, #ecfeff);
+            border-radius: 25px;
+            margin: 40px 20px;
+            padding: 60px 20px;
+            box-shadow: var(--shadow-md);
+        }
 
         .skills-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 25px;
         }
 
         .skill-card {
-            background: linear-gradient(135deg, #ffffff, #f0f4ff);
-            padding: 25px;
+            background: white;
+            padding: 30px;
             border-radius: 20px;
             text-align: center;
-            transition: 0.4s;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            top: 0;
+            left: 0;
+        }
+
+        .skill-card h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
         }
 
         .skill-card:hover {
             transform: translateY(-12px) scale(1.05);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            box-shadow: var(--shadow-lg);
         }
 
         /* Projects */
-        #projects { background: linear-gradient(135deg, #ad4170, #794e83);
-                    border-radius: 20px;
-                    margin: 40px 20px;
-                    padding: 60px 20px;
-                  }
+        #projects {
+            background: linear-gradient(135deg, #eef2ff, #ecfeff);
+            border-radius: 25px;
+            margin: 40px 20px;
+            padding: 60px 20px;
+            box-shadow: var(--shadow-md);
+        }
 
         .projects-container {
             display: grid;
@@ -128,43 +185,52 @@
             background: white;
             padding: 20px;
             border-radius: 20px;
-            transition: 0.4s;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow-md);
         }
 
         .project-card img {
             width: 100%;
             border-radius: 15px;
-            transition: 0.4s;
         }
-
-        .project-card:hover img { transform: scale(1.1); }
 
         .project-card:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            transform: translateY(-12px) scale(1.03);
+            box-shadow: var(--shadow-lg);
         }
 
-        button {
-            padding: 10px 20px;
-            background: linear-gradient(135deg, #4f46e5, #06b6d4);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-        }
+        /* Buttons */
+       button {
+    padding: 12px 24px;
+    border-radius: 10px;
+    border: none;
+    background: var(--primary);
+    color: white;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    cursor: pointer;
 
-        button:hover { transform: scale(1.05); }
+    box-shadow: 0 8px 20px rgba(99,102,241,0.4);
+}
 
-        #contact, #social { text-align: center;
-        
-        background-color: beige;
-    }
+/* Hover Effect */
+button:hover {
+    transform: translateY(-4px) scale(1.06);
+    background: var(--secondary);
+
+    box-shadow: 
+        0 18px 40px rgba(34,197,94,0.6),
+        0 0 15px rgba(34,197,94,0.4);
+}
+
+        /* Contact */
+        #contact, #social { text-align: center; }
 
         input {
-            padding: 10px;
+            padding: 12px;
             margin: 10px;
             width: 250px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
         }
 
         footer {
@@ -174,22 +240,9 @@
             padding: 15px;
         }
 
-        .fid{
-            background-color: #3e5593;
-        }
-
-        /* Mobile */
         @media (max-width: 768px) {
-            section { padding: 40px 15px; }
-
             .about-section { flex-direction: column; text-align: center; }
-
-            .projects-container,
-            .skills-container { grid-template-columns: 1fr; }
-
-            input { width: 90%; }
         }
-
     </style>
 </head>
 
@@ -219,15 +272,12 @@
     <img src="profilepic.jpg" width="300">
     <div class="about-text">
         <h2>About Me</h2>
-        <p>
-            Hello! I am <strong>Chitturi Pavan Kumar</strong>.
-            I specialize in building scalable data pipelines using PySpark and Spark SQL.
-        </p>
+        <p>Hello! I am <strong>Chitturi Pavan Kumar</strong>. I specialize in building scalable data pipelines using PySpark and Spark SQL.</p>
     </div>
 </section>
 
 <section id="Skills">
-    <h2 style="background-color:yellowgreen">Skills</h2>
+    <h2>Skills</h2>
     <div class="skills-container">
         <div class="skill-card"><h3>PySpark</h3><p>Big Data Processing</p></div>
         <div class="skill-card"><h3>Spark SQL</h3><p>Data Queries</p></div>
@@ -237,7 +287,7 @@
 </section>
 
 <section id="projects">
-    <h2 style="background-color:yellowgreen">Projects</h2>
+    <h2>Projects</h2>
     <div class="projects-container">
         <div class="project-card">
             <img src="projects.jpg">
@@ -264,11 +314,11 @@
 
 <section id="social">
     <h2>Connect</h2>
-    <a href="https://www.linkedin.com/in/pavan-kumar-chitturi-1078a5231/" target="_blank">LinkedIn</a>
-    <a href="https://github.com/pavanchitturi1/HTMLPRACTISE.git" target="_blank">GitHub</a>
+    <a href="https://www.linkedin.com/in/pavan-kumar-chitturi-1078a5231/">LinkedIn</a><br>
+    <a href="https://github.com/">GitHub</a>
 </section>
 
-<footer class="fid">
+<footer>
     © 2026 Portfolio
 </footer>
 
